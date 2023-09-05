@@ -23,6 +23,13 @@ jobs:
           hugo-version: '0.110.0'
           extended: true # 建議加上去，不然有可能會收到scss編譯錯誤
 
+      - uses: actions/cache@v2
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+
       - name: Build
         run: hugo --minify # 編譯
 
