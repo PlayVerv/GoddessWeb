@@ -20,7 +20,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.110.0'
+          hugo-version: 'latest'
           extended: true # 建議加上去，不然有可能會收到scss編譯錯誤
 
       - uses: actions/cache@v3
