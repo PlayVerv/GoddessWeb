@@ -5,7 +5,7 @@ languageCode: "zh-tw"
 defaultContentLanguage: "zh-tw"
 theme: "github.com/kdevo/osprey-delight"
 tags: ["business", "goddess"]
-#canonifyURLS: true
+canonifyURLS: true
 #googleAnalytics: ""
 disableKinds: ["taxonomy"]
 enableEmoji: true
