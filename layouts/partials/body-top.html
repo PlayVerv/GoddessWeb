@@ -35,10 +35,10 @@
 <nav class="row middle-xs center-xs {{ if not .IsHome -}} nav-fixed nav-shadow {{- end }}">
   <div class="col-xs-6 col-sm-1 logo" style="{{ if not .IsHome }}visibility: visible;{{- end }}">
     <a href="{{ "#" | relLangURL }}">
-      {{ with .Site.Params.logoSmall }}
+      <!-- {{ with .Site.Params.logoSmall }}
           <img src="{{ . | absURL }}" loading="lazy">
-      {{ end }}
-      <!-- {{ partial "lazyimg" (dict 
+      {{ end }} -->
+      {{ partial "lazyimg" (dict 
         "img" (resources.Get .Site.Params.logoSmall)
         "maxsize" (default "96x" site.Params.Image.NavLogo.resize)
         "lqipsize" (default "16x" site.Params.Image.NavLogo.resize)
@@ -46,7 +46,7 @@
         "alt" "Home"
         "renderer" "webp"
         "noscript" false
-      ) }} -->
+      ) }}
     </a>
   </div>
     {{ range .Site.Menus.main }}
