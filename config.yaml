@@ -1,5 +1,6 @@
 title: "女神科網有限公司"
-baseURL: "https://localhost:1313" #https://playverv.github.io/GoddessWeb
+#baseURL: "https://localhost:1313"
+baseURL: "https://playverv.github.io/GoddessWeb"
 languageCode: "zh-tw"
 defaultContentLanguage: "zh-tw"
 theme: "github.com/kdevo/osprey-delight"
