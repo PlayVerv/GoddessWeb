@@ -31,17 +31,17 @@
 
 nav {
   position: absolute;
-  z-index: 100;
+  z-index: 200;
   bottom: 0;
   width: 100%;
   height: $vertical-rhythm * 1.5;
   background-color: $primary-bg-color;
   text-align: center;
 
-  h3 {
+  h4 {
     margin: 0;
     font-family: $nav-font;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
   }
@@ -73,6 +73,7 @@ nav {
   top: 0;
   bottom: auto;
   box-shadow: 0 3px 4px rgba(0, 0, 0, .2);
+
 
   @media (max-width: $mobile-breakpoint) {
       opacity: 1;
