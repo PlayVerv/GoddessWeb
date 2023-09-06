@@ -8,12 +8,13 @@
 {{ if .IsHome }}
   {{ if not .Site.Params.header_use_video }}
   <header class="row middle-xs center-xs bg lazyload">
-    <div class="col-xs-12">
+    <div class="col-xs-12" id="HeadLine">
       {{ partial "logo-img.html" . }}
       {{ with .Site.Params.mdTagline -}}
-          {{ (replace (. | markdownify) "{cursor}" "<span class=\"cursor\">|</span>") | safeHTML }}
+          <!-- {{ (replace (. | markdownify) "{cursor}" "<span class=\"cursor\">|</span>") | safeHTML }} -->
+          {{ (. | markdownify) | safeHTML }}
       {{- else -}}
-          <h1>{{ .Site.Params.tagline }}<span class="cursor">|</span></h1>
+          <h1>{{ .Site.Params.tagline }}</h1>
       {{- end }}
       <noscript>
       <h2>{{ partial "icon" "warning" }}</h2>
@@ -51,7 +52,7 @@
   </div>
     {{ range .Site.Menus.main }}
       <div class="col-xs-3 col-sm-2 nav-item">
-        <h3><a href="{{ .URL }}">{{ .Pre }}{{ or (T .Identifier) .Name | safeHTML }}</a></h3>
+        <h4><a href="{{ .URL }}">{{ .Pre }}{{ or (T .Identifier) .Name | safeHTML }}</a></h4>
       </div>
     {{ end }}
   <div class="col-xs-6 col-sm-1 nav-toggle" style="{{ if not .IsHome -}} visibility: visible; {{- end }}">
