@@ -52,6 +52,8 @@ other = "關於我們"
 [gallery]
 other = "產品"
 [blog]
-other = "資訊"
+other = "最新訊息"
 [contact]
 other = "聯絡我們"
+[hr]
+other = "人才招募"
