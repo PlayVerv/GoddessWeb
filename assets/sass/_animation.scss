@@ -33,12 +33,26 @@
   }
 }
 
+@keyframes nav-slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 .scale-in-center {
   animation: scale-in-center .3s cubic-bezier(.25, .46, .45, .94) both;
 }
 
 .scale-out-center {
   animation: scale-out-center .4s cubic-bezier(.895, .03, .685, .22) both;
+}
+
+.nav-slide-in {
+  animation: nav-slide-in 1s cubic-bezier(.25, .46, .45, .94) both;
 }
 
 // .cursor {
