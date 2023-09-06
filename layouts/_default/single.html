@@ -10,16 +10,21 @@
 
       <section class="container">
         <section class="content">
+          {{ if not .Params.custom_title }}
           <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
+          {{ end }}
 
-            <div class="sub-header">
-              {{ .Date.Format (.Site.Params.dateform | default "January 2, 2006") }} · {{ i18n "minuteRead" .ReadingTime }}
-            </div>
+          {{ if not .Params.hideDateAndReadTime }}
+          <div class="sub-header">
+            {{ .Date.Format (.Site.Params.dateform | default "January 2, 2006") }} · {{ i18n "minuteRead" .ReadingTime }}
+          </div>
+          {{ end }}
 
           <article class="entry-content">
             {{ .Content }}
           </article>
 
+          {{if not .Params.disable_page }}
           <div class="pagination">
             {{ if .PrevInSection }}
               <a href="{{ .PrevInSection.Permalink }}">&laquo; {{ .PrevInSection.Title }}</a>
@@ -28,6 +33,7 @@
               <a href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }} &raquo;</a>
             {{ end }}
           </div>
+          {{ end }}
           
         </section>
         <br>
