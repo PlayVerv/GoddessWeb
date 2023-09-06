@@ -58,6 +58,7 @@ header {
   min-height: 100%;
   background-color: $primary-bg-color;
   color: $primary-fg-color;
+  overflow: hidden;
 
   div {
     z-index: 101;
