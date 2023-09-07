@@ -43,6 +43,42 @@
   }
 }
 
+@keyframes ani-left-fade-in {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes ani-right-fade-in {
+  0% {
+    transform: translateX(50%);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes ani-bottom-fade-in {
+  0% {
+    transform: translateY(30%);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 .scale-in-center {
   animation: scale-in-center .3s cubic-bezier(.25, .46, .45, .94) both;
 }
@@ -54,6 +90,19 @@
 .nav-slide-in {
   animation: nav-slide-in 1s cubic-bezier(.25, .46, .45, .94) both;
 }
+
+.ani-btu {
+  animation: ani-bottom-fade-in 1s cubic-bezier(0.5, -0.01, 0, 1.005) both;
+}
+
+.ani-ltr {
+  animation: ani-left-fade-in 1s cubic-bezier(0.5, -0.01, 0, 1.005) both;
+}
+
+.ani-rtl {
+  animation: ani-right-fade-in 1s cubic-bezier(0.5, -0.01, 0, 1.005) both;
+}
+
 
 // .cursor {
 //   animation: 1s blink step-end infinite;
