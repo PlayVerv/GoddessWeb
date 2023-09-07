@@ -5,6 +5,9 @@
   const SECTIONS = [...$$("main > section")].reverse()
   const THRESHOLD = 330
   var oldIdx = -1
+  
+  var headLine = document.getElementById('HeadLine');
+  headLine.classList.add('ani-btu');
 
   window.addEventListener("scroll", () => { 
     var scrollPosition = window.scrollY || window.pageYOffset
@@ -16,7 +19,7 @@
     ScrollChangeNavHeaderHandler(scrollPosition)
     ScrollFadeCoverTitleHandler(scrollPosition)
   });
-
+  
   //Scroll change nav header handler
   function ScrollChangeNavHeaderHandler(scrollPos) {
     const idx = SECTIONS.length - 1 - SECTIONS.findIndex(
@@ -44,10 +47,13 @@
   }
 
   //Scroll fade cover-title handler
-  var headLine = document.getElementById('HeadLine');
   function ScrollFadeCoverTitleHandler(scrollPos) {
     if(!headLine) {
       return;
+    }
+
+    if(headLine.classList.contains('ani-btu')) {
+      headLine.classList.remove('ani-btu');
     }
 
     var distanceToTop = scrollPos + headLine.getBoundingClientRect().top;
