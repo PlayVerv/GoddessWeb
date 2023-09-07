@@ -12,13 +12,13 @@
   <div class="row center-xs">
     <div class="col-xs-12">
       {{ with site.Params.address }}
-        <div><i class="icon icon-home"></i>{{ i18n "footer-address" }} : {{ . }}</div>
+        <div><i class="icon icon-home"></i>{{ i18n "title-address" }} : {{ i18n . }}</div>
       {{ end }}
       {{ with site.Params.telephone}}
-        <div><i class="icon icon-phone"></i>{{ i18n "footer-tel"}} : {{ . }}</div>
+        <div><i class="icon icon-phone"></i>{{ i18n "title-tel"}} : {{ i18n . }}</div>
       {{ end }}
       {{ with site.Params.email }}
-        <div><i class="icon icon-mail"></i>{{ i18n "footer-email"}} : {{ . }}</div>
+        <div><i class="icon icon-mail"></i>{{ i18n "title-email"}} : {{ i18n . }}</div>
       {{ end }}
     </div>
   </div>
