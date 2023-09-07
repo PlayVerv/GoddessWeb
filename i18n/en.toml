@@ -41,12 +41,18 @@ other = "Copyright"
 other = "Please enable JavaScript for the full experience!"
 [nojsForm]
 other = "Please enable JavaScript to use the contact form."
-[footer-address]
+[title-address]
 other = "Address"
-[footer-tel]
+[title-tel]
 other = "Tel"
-[footer-email]
-other = "EMail"
+[title-email]
+other = "E-Mail"
+[com-address]
+other = "Hsinchu, Taiwan"
+[com-tel]
+other = "0955-555878"
+[com-email]
+other = "email@email"
 [about]
 other = "About"
 [gallery]
@@ -57,3 +63,5 @@ other = "News"
 other = "Contact"
 [hr]
 other = "HR"
+[back]
+other = "Back"
