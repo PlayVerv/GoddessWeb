@@ -92,7 +92,7 @@
   {{- end }}
 
   {{ if .Site.Params.Feat.useLazySizes -}}
-    <script src="{{ (resources.Get "js/vendor/lazysizes.min.js").Permalink }}" async></script>
+    {{ partial "lazyimg-setup" }}
   {{- end }}
 
   {{ if .Site.Params.Feat.googleTagManager }}
