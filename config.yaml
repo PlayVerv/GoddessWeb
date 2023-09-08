@@ -3,8 +3,9 @@ title: "女神科網有限公司"
 baseURL: "https://playverv.github.io/GoddessWeb"
 languageCode: "zh-tw"
 defaultContentLanguage: "zh-tw"
+defaultContentLanguageInSubdir: true
 theme: "github.com/kdevo/osprey-delight"
-tags: ["business", "goddess"]
+tags: ["女神科網", "goddess", "美妝", "保養品"]
 canonifyURLS: true
 #googleAnalytics: ""
 disableKinds: ["taxonomy"]
@@ -30,10 +31,10 @@ Params:
 
   # logoSmall is the logo that will be shown in the left corner of the nav bar.
   #   Use a path relative to the assets dir for auto-resizing.
-  logoSmall: "osprey-logo-small.png"
+  logoSmall: "/images/osprey-logo-small.png"
   
   # background can optionally be specified as an image layer behind logoBig at the top of the page (parallax effect).
-  background: "background.webp"
+  background: "/images/background.webp"
   
   # opengraphImage specifies the image that is shown when previewing the site in a messenger or Google Search.
   opengraphImage: "/images/osprey-delight.png"
@@ -58,9 +59,10 @@ Params:
   #   If this switch is enabled, all these "orphan" files will contain only a redirect directive.
   enforceSinglePage: false
 
-  address: "新竹市東區文華里7鄰北大路22號3樓之5"
-  telephone: "0955-555878"
-  email: "mail@mail"
+  #使用i18n來取得資訊
+  address: "com-address"
+  telephone: "com-tel"
+  email: "com-email"
   copyright: true
 
   # credit to the theme. If you want to support the theme by please leave this in, it's kept very tiny and short.
@@ -100,6 +102,9 @@ Params:
     #   Whenever there is a new one, a warning is printed to console.
     notifyOnNewThemeVersion: true
   
+    useLazySizes: true
+    #useJQuery: true
+
   # Image resizing can be configured here (see README for more info):
   Image:
     Logo:
@@ -160,4 +165,23 @@ Menu:
     #   # pre makes it possible to use arbitrary HTML before the name, e.g. referencing icons here is possible:
     #   pre: '<svg class="icon"><use xlink:href="#icon-external"/></svg>&nbsp;'
     #   url: "https://pyotek.dev"
-    #   weight: 5
+
+
+## 多語系設定
+languages:
+  zh-tw:
+    contentDir: content/zh-tw
+    disabled: false
+    languageCode: zh-tw
+    languageDirection: ltr
+    languageName: 繁體中文
+    title: 女神科網有限公司
+    weight: 1
+  en:
+    contentDir: content/en
+    disabled: true
+    languageCode: en-US
+    languageDirection: ltr
+    languageName: English
+    title: Goddess
+    weight: 2
