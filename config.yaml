@@ -27,17 +27,17 @@ Params:
   header_use_video: false
 
   # logoBig appears at the top of the page. Use a path relative to the assets dir for auto-resizing. 
-  logoBig: "/images/osprey-delight.png"
+  logoBig: "/images/Goddess-logo.png"
 
   # logoSmall is the logo that will be shown in the left corner of the nav bar.
   #   Use a path relative to the assets dir for auto-resizing.
-  logoSmall: "/images/osprey-logo-small.png"
+  logoSmall: "/images/Goddess-logo-small.png"
   
   # background can optionally be specified as an image layer behind logoBig at the top of the page (parallax effect).
   background: "/images/background.webp"
   
   # opengraphImage specifies the image that is shown when previewing the site in a messenger or Google Search.
-  opengraphImage: "/images/osprey-delight.png"
+  opengraphImage: "/images/Goddess-logo.png"
 
   # favicon of the site (e.g. smaller version of logoSmall).
   favicon: "favicon.png"
