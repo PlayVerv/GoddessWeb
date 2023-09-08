@@ -2,9 +2,11 @@
 weight: 1 
 date: "2019-09-18T21:57:17-07:00"
 title: "Osprey Delight"
-image: "images/products/osprey-delight-logo.png"
+image: "products/item01.png"
 color: "#ffffff"
+hoverColor: "#212121BB"
 type: "github"
+draft: true
 github:
     repo: "kdevo/osprey"
     showInfo: true

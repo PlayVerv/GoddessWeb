@@ -2,9 +2,10 @@
 weight: 10
 date: "2019-05-17T22:25:16-07:00"
 title: "KDEVO"
-image: "images/products/kd.png"
+image: "products/item01.png"
 alt: "kdevo"
 color: "#263238"
+hoverColor: "#212121BB"
 buttons:
   - i18n: view
     url: "https://kdevo.github.io"

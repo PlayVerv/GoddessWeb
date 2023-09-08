@@ -2,9 +2,10 @@
 weight: 30
 date: "2017-05-15T20:00:16-07:00"
 title: "Toma Nistor"
-image: "images/products/toma-nistor.png"
+image: "products/item01.png"
 alt: "Toma Nistor"
 color: "#212121"
+hoverColor: "#212121BB"
 buttons:
   - i18n: view
     url: "https://tomanistor.com"

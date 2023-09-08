@@ -2,9 +2,10 @@
 weight: 10
 date: "2017-05-12T22:25:02-07:00"
 title: "Hugo"
-image: "images/products/hugo.png"
+image: "products/item01.png"
 alt: "Hugo - a fast and modern static website engine"
 color: "#0a1922"
+hoverColor: "#212121BB"
 buttons:
   - icon: gift 
     i18n: download 
