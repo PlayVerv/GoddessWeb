@@ -1,7 +1,8 @@
 .about {
   width: 100%;
   background-color: $secondary-bg-color;
-
+  position: relative;
+  
   p {
     @include size(h3);
     margin-top: $vertical-rhythm;
