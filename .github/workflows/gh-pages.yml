@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-hugomod-
 
       - name: Build
-        run: sudo hugo --minify # 編譯
+        run: hugo --minify # 編譯
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
