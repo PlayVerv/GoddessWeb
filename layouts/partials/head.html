@@ -53,6 +53,8 @@
   {{- end }}
   {{ with .Site.Params.favicon -}}
     {{ with (resources.Get .) -}}
+        <!-- 不知道為什麼github actions會出現permission denied，不確定是fill沒有了png參數，還是改為test.png才又可以
+        之後不用gidhub pages後再改回來 -->
         <!-- {{ $img := slice (.Fill "192x192 png Lanczos Center") | resources.Concat "favicon.png" }} -->
         {{ $img := .Fill "192x192 Lanczos Center" }}
         {{ $img = slice $img | resources.Concat (printf "test%s" (path.Ext .)) }}
