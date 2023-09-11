@@ -79,7 +79,6 @@
   {{- end }}
 
   <link rel="stylesheet" href="{{ (resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS (dict "targetPath" "style.css" "outputStyle" "compressed") | resources.Fingerprint).Permalink }}">
-  <!-- <link rel="stylesheet" href="critical.css"> -->
   <!-- <link rel="stylesheet" href="{{ (resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS (dict "targetPath" "style.css" "outputStyle" "compressed") | resources.Fingerprint).Permalink }}" media="print" onload="this.media='all'"> -->
 
   {{ if .Site.Params.Feat.useStructuredData -}}
