@@ -53,7 +53,9 @@
   {{- end }}
   {{ with .Site.Params.favicon -}}
     {{ with (resources.Get .) -}}
-        {{ $img := slice (.Fill "192x192 png Lanczos Center") | resources.Concat "favicon.png" }}
+        <!-- {{ $img := slice (.Fill "192x192 png Lanczos Center") | resources.Concat "favicon.png" }} -->
+        {{ $img := .Fill "192x192 Lanczos Center" }}
+        {{ $img = slice $img | resources.Concat (printf "test%s" (path.Ext .)) }}
         <link rel="icon" type="image/png" href="{{ $img.Permalink }}">
     {{- else -}}
       <link rel="icon" type="image/png" href="{{ . | absURL }}">
