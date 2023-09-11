@@ -40,7 +40,7 @@ Params:
   opengraphImage: "/images/Goddess-logo.png"
 
   # favicon of the site (e.g. smaller version of logoSmall).
-  favicon: "favicon.png"
+  favicon: "/images/favicon.png"
 
   # theme your site by choosing one of the themes under assets/sass/themes:
   #   - delight is the light version of osprey-delight
