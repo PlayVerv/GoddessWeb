@@ -1,7 +1,18 @@
-{{ $buildOptions := dict "minify" true "target" "es2015" }}
+{{/* $buildOptions := dict "minify" true "target" "es2015" */}}
+{{ $scripts := slice }}
+{{ range (.Site.Params.Feat.plugins) }}
+  {{ if findRE "^http" .link }}
+  <script src="{{ .link | absURL }}" type="application/javascript" {{.attributes | safeHTMLAttr}}></script>
+  {{ else }}
+  {{ $scripts = $scripts | append (resources.Get .link) }}
+  {{ end }}
+{{ end }}
+
 {{ if .IsHome }}
-  {{ $scripts := slice }}
   {{ $scripts = $scripts | append (resources.Get "js/src/base.js") }}
+  {{ $scripts = $scripts | append (resources.Get "js/src/nav.js" | resources.ExecuteAsTemplate "js/src/nav.js" .) }}
+  {{ $scripts = $scripts | append (resources.Get "js/src/home.js") }}
+  {{ $scripts = $scripts | append (resources.Get "js/src/test.js") }}
 
   {{ if .Site.Params.Feat.useTermynal -}}
     {{ $scripts = $scripts | append (resources.Get "js/src/termynal.js" | resources.ExecuteAsTemplate "js/src/termynal.js" .) }}
@@ -11,18 +22,22 @@
     {{ $scripts = $scripts | append (resources.Get "js/src/modal.js" | resources.ExecuteAsTemplate "js/src/modal.js" .) }}
   {{- end }}
 
-  {{ $scripts = $scripts | append (resources.Get "js/src/nav.js" | resources.ExecuteAsTemplate "js/src/nav.js" .) }}
-  {{ $scripts = $scripts | append (resources.Get "js/src/home.js") }}
-
   {{ if (.Site.Params.Feat.ajaxBasin) -}}
     {{ $scripts = $scripts | append (resources.Get "js/src/contact.js" | resources.ExecuteAsTemplate "js/src/contact.js" .) }}
   {{- end }}
-  {{ $content := ($scripts | resources.Concat "js/bundle-home.js" | js.Build $buildOptions).Content }}
+
+  {{/* $content := ($scripts | resources.Concat "/js/bundle-home.js" | js.Build $buildOptions).Content */}}
+  {{ $content := ($scripts | resources.Concat "/js/bundle-home.js" | minify | fingerprint "sha512").Content }}
   {{ if (gt (len $content) 6144) -}} {{ warnf "Performance: inlined JS is %dKB" (len $content) }} {{- end }}
-  <script>{{ $content | safeJS }}</script>
+  <script type="application/javascript">{{ $content | safeJS }}</script>
+  {{/* <script crossorigin="anonymous" defer="defer" data-turbolinks-suppress-warning type="application/javascript">{{$content | safeJS}}</script> */}}
 {{- else -}}
-  {{ $scripts := slice (resources.Get "js/src/base.js") (resources.Get "js/src/nav.js") }}
-  {{ $content := ($scripts | resources.Concat "js/bundle-blog.js" | js.Build $buildOptions).Content }}
-  <script>{{ $content | safeJS }}</script>
+  {{ $scripts := $scripts | append (resources.Get "js/src/base.js") }}
+  {{ $scripts := $scripts | append (resources.Get "js/src/nav.js") }}
+
+  {{/* $content := ($scripts | resources.Concat "/js/bundle-blog.js" | js.Build $buildOptions).Content */}}
+  {{ $content := ($scripts | resources.Concat "/js/bundle-blog.js" | minify | fingerprint "sha512").Content }}
+  <script type="application/javascript">{{ $content | safeJS }}</script>
 {{ end }}
+
 {{ partial "icon-data" . }}
