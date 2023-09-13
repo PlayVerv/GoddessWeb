@@ -103,7 +103,12 @@ Params:
     notifyOnNewThemeVersion: true
   
     useLazySizes: true
-    #useJQuery: true
+
+    # 匯入相關js lib，如果link是網址 http 則使用 <script src="" type="javascript"></script>
+    # 如果是相對路徑，則會使用js.Build打包，因為使用了resources.Get，所以檔案位置必須在assets資料夾中
+    plugins:
+    - link: "js/vendor/jquery.min.js"
+    - link: "js/vendor/jquery.scrollex.min.js"
 
   # Image resizing can be configured here (see README for more info):
   Image:
