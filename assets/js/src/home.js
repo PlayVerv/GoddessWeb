@@ -1,21 +1,21 @@
 (() => {
   // Nav starts at bottom then is fixed to top
   // Logo and hamburger menus fade in and out
-  const ITEMS = [...$$(".nav-item")]
-  const SECTIONS = [...$$("main > section")].reverse()
+  const ITEMS = [...$(".nav-item")]
+  const SECTIONS = [...$("main > section")].reverse()
   const THRESHOLD = 330
   var oldIdx = -1
-  
-  var headLine = document.getElementById('HeadLine');
-  headLine.classList.add('ani-btu');
 
-  window.addEventListener("scroll", () => { 
-    var scrollPosition = window.scrollY || window.pageYOffset
-        windowHeight = window.innerHeight
-        navHeight = nav.clientHeight
+  var headLine = $('#HeadLine');
+  headLine.addClass('ani-btu');
+
+  $(window).scroll(function() { 
+    var scrollPosition = $(window).scrollTop()// window.scrollY || window.pageYOffset
+        windowHeight = $(window).innerHeight();// window.innerHeight
+        //navHeight = nav.clientHeight
 
     //ScrollSetFixNavHandler(scrollPosition > windowHeight - navHeight)
-    ScrollSetFixNavHandler(scrollPosition > windowHeight - 1)
+    ScrollSetFixNavHandler(scrollPosition > windowHeight - 1) //因目前有個滑入動畫，所以改為全nav離開畫面後才fix
     ScrollChangeNavHeaderHandler(scrollPosition)
     ScrollFadeCoverTitleHandler(scrollPosition)
   });
@@ -25,14 +25,17 @@
     const idx = SECTIONS.length - 1 - SECTIONS.findIndex(
       (sec) => scrollPos > sec.offsetTop - THRESHOLD 
     )
+    
     if (idx != oldIdx) {
       requestAnimationFrame(() => { changeNavHeader(idx) })
     }
   }
   function changeNavHeader(idx) {
-    ITEMS.forEach((itm) => { itm.classList.remove("nav-item-active") })
+    $.each(ITEMS, (index, el) => {
+      $(el).removeClass("nav-item-active");
+    })
     if (idx < SECTIONS.length) {
-      ITEMS[idx].classList.add("nav-item-active")
+     $(ITEMS[idx]).addClass("nav-item-active")
     }
     oldIdx = idx
   }
@@ -52,25 +55,23 @@
       return;
     }
 
-    if(headLine.classList.contains('ani-btu')) {
-      headLine.classList.remove('ani-btu');
+    if(headLine.hasClass('ani-btu')) {
+      headLine.removeClass('ani-btu');
     }
 
-    var distanceToTop = scrollPos + headLine.getBoundingClientRect().top;
-    var elementHeight = headLine.offsetHeight;
-    var scrollTop = document.documentElement.scrollTop;
-    
+    var distanceToTop = headLine.offset().top;
+    var elementHeight = headLine.height();
     var opacity = 1;
     var posTop = 0;
     
-    if (scrollTop > distanceToTop) {
-      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
-      posTop = ((scrollTop - distanceToTop) / elementHeight) * 120;
+    if (scrollPos > distanceToTop) {
+      opacity = 1 - (scrollPos - distanceToTop) / elementHeight;
+      posTop = ((scrollPos - distanceToTop) / elementHeight) * 120;
     }
     
     if (opacity >= 0) {
-      headLine.style.opacity = opacity;
-      headLine.style.top = posTop + "px";
+      headLine.css({ 'opacity' : opacity });
+      headLine.css({ 'top': posTop + 'px' });
     }
   }
 

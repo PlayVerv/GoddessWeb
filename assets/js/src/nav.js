@@ -1,20 +1,20 @@
 var menuActive = false
 var navFixed = false
 var nav = $('nav')
-    navToggleAndLogo = $$('nav > .logo, nav > .nav-toggle')
+    navToggleAndLogo = $('nav > .logo, nav > .nav-toggle')
 
 function fixNav(setFixed) {
   if (setFixed) {
-    nav.classList.add('nav-fixed')
-    nav.classList.add('nav-slide-in')
-    navToggleAndLogo.forEach((el) => {
-      setVisibility(el, true, false)
-    })
+    nav.addClass('nav-fixed')
+    nav.addClass('nav-slide-in')
+    navToggleAndLogo.each((index, el) => {
+      setVisibility($(el), true, false)
+    });
   } else {
-    nav.classList.remove('nav-fixed')
-    nav.classList.remove('nav-slide-in')
-    navToggleAndLogo.forEach((el) => {
-      setVisibility(el, false, false)
+    nav.removeClass('nav-fixed')
+    nav.removeClass('nav-slide-in')
+    navToggleAndLogo.each((index, el) => {
+      setVisibility($(el), false, false)
     })
   }
   navFixed = setFixed
@@ -22,46 +22,58 @@ function fixNav(setFixed) {
 
 function toggleMenu() {
   if (menuActive) {
-    $('.nav-icon').classList.remove('icon-active')
+    $('.nav-icon').removeClass('icon-active')
   } else {
-    $('.nav-icon').classList.add('icon-active')
+    $('.nav-icon').addClass('icon-active')
   }
   menuActive = !menuActive
 }
 
 // Full screen nav open on click
-$('.nav-icon').addEventListener('click', () => {
+$('.nav-icon').click(() => {
   toggleMenu()
-  $$('.nav-full, main').forEach((el) => {
-    el.classList.toggle('active')
+  $('.nav-full, main').each((index, el) => {
+    if ($(el).hasClass('active')) {
+      $(el).removeClass('active')
+    } else {
+      $(el).addClass('active')
+    }
   })
 })
 
 // Full screen nav close on click
-$$('.nav-full a').forEach((links) => {
-  links.addEventListener('click', () => {
+$('.nav-full a').each((index, el) => {
+  $(el).on('click', () => {
     toggleMenu()
-    $$('.nav-full, main').forEach((el) => {
-      el.classList.toggle('active')
+    $('.nav-full, main').each((index, el) => {
+      if ($(el).hasClass('active')) {
+        $(el).removeClass('active')
+      } else {
+        $(el).addClass('active')
+      }
     })
   })
 })
 
 // Fix logoBig drawing over nav when click on logoSmall while nav open
-$('.logo').addEventListener('click', () => {
-  if ($('.nav-full').classList.contains('active')) {
+$('.logo').click(() => {
+  if ($('.nav-full').hasClass('active')) {
     toggleMenu()
-    $$('.nav-full, main').forEach((el) => {
-      el.classList.toggle('active')
+    $('.nav-full, main').each((index, el) => {
+      if ($(el).hasClass('active')) {
+        $(el).removeClass('active')
+      } else {
+        $(el).addClass('active')
+      }
     })
   }
 })
 
 // Disable scroll when full screen nav is open
-$('body').addEventListener('click', () => {
-  if ($('.nav-full').classList.contains('active')) {
-    $('html').style.overflowY = 'hidden'
+$('body').click(() => {
+  if ($('.nav-full').hasClass('active')) {
+    $('html').css({ 'overflowY' : 'hidden' })
   } else {
-    $('html').style.overflowY = 'scroll'
+    $('html').css({ 'overflowY' : 'scroll' })
   }
 })

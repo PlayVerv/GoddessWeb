@@ -1,7 +1,6 @@
+//For lazyimg and some js libs
 document.documentElement.className = "js"
 
-var $ = document.querySelector.bind(document),
-  $$ = document.querySelectorAll.bind(document)
 /**
  * 
  * @param {Element} e Element for DOM modification 
@@ -10,16 +9,16 @@ var $ = document.querySelector.bind(document),
  */
 function setVisibility(e, visible, useAttr = true) {
   if (visible) {
-    e.style.visibility = "visible"
+    $(e).css({ 'visibility' : 'visible' });
     if (useAttr) {
-      e.removeAttribute("hidden")
+      $(e).removeProp("hidden");
     }
   } else {
-    e.style.visibility = "hidden"
+    $(e).css({ 'visibility' : 'hidden' });
     if (useAttr) {
-      e.setAttribute("hidden", true)
+      $(e).prop("hidden", true);
     }
   }
-  e.classList.add(visible ? 'show' : 'hide')
-  e.classList.remove(visible ? 'hide' : 'show')
+  $(e).addClass(visible ? 'show' : 'hide')
+  $(e).removeClass(visible ? 'hide' : 'show')
 }
